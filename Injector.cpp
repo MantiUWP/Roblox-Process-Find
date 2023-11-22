@@ -1,22 +1,10 @@
-﻿#include <Windows.h>
+#include <Windows.h>
 #include <TlHelp32.h>
 #include <iostream>
 
 int main() {
-    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-    CONSOLE_SCREEN_BUFFER_INFO consoleInfo;
-    WORD defaultAttributes;
-
-    // Get the current console text attributes to restore later
-    GetConsoleScreenBufferInfo(hConsole, &consoleInfo);
-    defaultAttributes = consoleInfo.wAttributes;
-
-    // Set the text color to yellow
-    SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN);
-
     std::cout << "[+]Byfron Bypasser[BETA]" << std::endl;
     Sleep(5000);
-
     std::cout << "[+]Roblox Scanning..." << std::endl;
 
     DWORD processId = 0;
@@ -32,7 +20,7 @@ int main() {
                     processId = processEntry.th32ProcessID;
 
                     // Display a message box when the process is found
-                    MessageBox(nullptr, L"Injected Succefully!", L"Roblox UWP Found!", MB_OK | MB_ICONINFORMATION);
+                    MessageBox(nullptr, L"Injected Succefly!", L"Roblox UWP Found!", MB_OK | MB_ICONINFORMATION);
 
                     break;
                 }
@@ -41,9 +29,6 @@ int main() {
 
         CloseHandle(snapshot);
     }
-
-    // Restore the default text attributes
-    SetConsoleTextAttribute(hConsole, defaultAttributes);
 
     if (processId != 0) {
         std::cout << "[+]Roblox Process ID: " << processId << std::endl;
